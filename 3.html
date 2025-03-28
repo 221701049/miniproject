@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Uzhavar Santhai Information</title>
+    <link rel="stylesheet" href="sty.css">
+   
+</head>
+<body>
+    <!-- Navbar -->
+    <nav>
+        <ul>
+            <img src="logo2.ico" alt="hello" width="100px" height="100px">
+            <li><a href="htm.html">முகப்பு</a></li>
+            <li><a href="2.html">பற்றி</a></li>
+            <li><a href="4.html">தரவு</a></li>
+            <li><a href="">உழவர் சந்தை எண்ணிக்கை</a></li>
+            <li> <button id="languageBtn">தமிழ்</button></li>
+        </ul>
+    </nav>
+
+    <!-- Language Toggle Button -->
+   
+
+    <!-- Table -->
+    <h1 id="tableHeading" style="text-align: center;">Uzhavar Santhai Information</h1>
+    <table id="uzhavarSanthaiTable">
+        <thead>
+            <tr>
+                <th id="snoHeader">S.No</th>
+                <th id="districtHeader">District Name</th>
+                <th id="santhaiHeader">Uzhavar Santhai</th>
+                <th id="shopsHeader">No of Shops</th>
+                <th id="fromHeader">Working Hours From</th>
+                <th id="toHeader">Working Hours To</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+
+    <!-- Pagination -->
+    <div class="pagination" id="pagination"></div>
+
+    <script>
+        
+
+        // Data in English
+           const englishData = [
+            { SNo: 1, DistrictName: "Tiruvallur", UzhavarSanthai: "Tiruthani", NoOfShops: 40, From: "7:00 AM", To: "2:00 PM" },
+            { SNo: 2, DistrictName: "Tiruvallur", UzhavarSanthai: "Tiruvallur", NoOfShops: 28, From: "7:00 AM", To: "4:00 PM" },
+            { SNo: 3, DistrictName: "Tiruvallur", UzhavarSanthai: "Ambattur", NoOfShops: 29, From: "7:00 AM", To: "2:00 PM" },
+            { SNo: 4, DistrictName: "Tiruvallur", UzhavarSanthai: "Paruthipattu", NoOfShops: 34, From: "7:00 AM", To: "2:00 PM" },
+            { SNo: 5, DistrictName: "Tiruvallur", UzhavarSanthai: "Naravarikuppam", NoOfShops: 24, From: "7:00 AM", To: "2:00 PM" },
+            { SNo: 6, DistrictName: "Tiruvallur", UzhavarSanthai: "Perambakkam", NoOfShops: 18, From: "7:00 AM", To: "2:00 PM" },
+            { SNo: 7, DistrictName: "Nagapattinam", UzhavarSanthai: "Nagapattinam", NoOfShops: 50, From: "5:00 AM", To: "12:00 PM" },
+            { SNo: 8, DistrictName: "Nagapattinam", UzhavarSanthai: "Mayiladuthurai", NoOfShops: 51, From: "5:00 AM", To: "12:00 PM" },
+            { SNo: 9, DistrictName: "Nagapattinam", UzhavarSanthai: "Sirkali", NoOfShops: 27, From: "5:00 AM", To: "12:00 PM" },
+            { SNo: 10, DistrictName: "Theni", UzhavarSanthai: "Kambam", NoOfShops: 65, From: "5:00 AM", To: "1:00 PM" },
+            { SNo: 11, DistrictName: "Dharmapuri", UzhavarSanthai: "Dharmapuri", NoOfShops: 72, From: "4:00 AM", To: "12:00 PM" },
+            { SNo: 12, DistrictName: "Theni", UzhavarSanthai: "Devaram", NoOfShops: 16, From: "5:00 AM", To: "1:00 PM" },
+            { SNo: 13, DistrictName: "Villupuram", UzhavarSanthai: "Tindivanam", NoOfShops: 64, From: "5:00 AM", To: "1:00 PM" },
+            { SNo: 14, DistrictName: "Dharmapuri", UzhavarSanthai: "Pennagaram", NoOfShops: 24, From: "4:30 AM", To: "10:00 AM" },
+            { SNo: 15, DistrictName: "Dindigul", UzhavarSanthai: "Dindigul", NoOfShops: 85, From: "4:00 AM", To: "11:00 AM" },
+            { SNo: 16, DistrictName: "Theni", UzhavarSanthai: "Periyakulam", NoOfShops: 35, From: "5:00 AM", To: "1:00 PM" },
+            { SNo: 17, DistrictName: "Villupuram", UzhavarSanthai: "Villupuram", NoOfShops: 48, From: "5:00 AM", To: "1:00 PM" },
+            { SNo: 18, DistrictName: "Namakkal", UzhavarSanthai: "Namakkal", NoOfShops: 134, From: "4:00 AM", To: "12:00 PM" },
+            { SNo: 19, DistrictName: "Kallakurichi", UzhavarSanthai: "Kallakurichi", NoOfShops: 90, From: "5:00 AM", To: "1:00 PM" },
+            { SNo: 20, DistrictName: "Coimbatore", UzhavarSanthai: "Sundarapuram", NoOfShops: 32, From: "4:30 AM", To: "11:30 AM" },
+            { SNo: 21, DistrictName: "Kallakurichi", UzhavarSanthai: "Ulundurpettai", NoOfShops: 80, From: "5:00 AM", To: "1:00 PM" },
+            { SNo: 22, DistrictName: "Namakkal", UzhavarSanthai: "Tiruchengode", NoOfShops: 84, From: "4:00 AM", To: "12:00 PM" },
+            { SNo: 23, DistrictName: "Dindigul", UzhavarSanthai: "Palani", NoOfShops: 119, From: "4:00 AM", To: "11:00 AM" },
+            { SNo: 24, DistrictName: "TheNilgiris", UzhavarSanthai: "Udhagamandalam", NoOfShops: 82, From: "7:00 AM", To: "2:00 PM" },
+            { SNo: 25, DistrictName: "Namakkal", UzhavarSanthai: "Rasipuram", NoOfShops: 84, From: "4:00 AM", To: "12:00 PM" },
+            { SNo: 26, DistrictName: "Villupuram", UzhavarSanthai: "Gingee", NoOfShops: 24, From: "5:00 AM", To: "1:00 PM" },
+            { SNo: 27, DistrictName: "Kallakurichi", UzhavarSanthai: "Sankarapuram", NoOfShops: 37, From: "5:00 AM", To: "1:00 PM" },
+            { SNo: 28, DistrictName: "Dindigul", UzhavarSanthai: "Chinnalapatti", NoOfShops: 30, From: "6:00 AM", To: "11:00 AM" },
+            { SNo: 29, DistrictName: "Dindigul", UzhavarSanthai: "Batlagundu", NoOfShops: 54, From: "6:00 AM", To: "10:00 AM" },
+            { SNo: 30, DistrictName: "Namakkal", UzhavarSanthai: "Kumarapalayam", NoOfShops: 62, From: "4:00 AM", To: "12:00 PM" },
+            { SNo: 31, DistrictName: "TheNilgiris", UzhavarSanthai: "Coonoor", NoOfShops: 60, From: "7:00 AM", To: "2:00 PM" },
+            { SNo: 32, DistrictName: "Dindigul", UzhavarSanthai: "Kodaikkanal", NoOfShops: 24, From: "6:00 AM", To: "10:00 AM" },
+            { SNo: 33, DistrictName: "Namakkal", UzhavarSanthai: "Paramathivelur", NoOfShops: 24, From: "4:00 AM", To: "12:00 PM" },
+            { SNo: 34, DistrictName: "Sivagangai", UzhavarSanthai: "Devakottai", NoOfShops: 40, From: "6:00 AM", To: "2:00 PM" },
+            { SNo: 35, DistrictName: "Namakkal", UzhavarSanthai: "Mohanur", NoOfShops: 24, From: "4:00 AM", To: "12:00 PM" },
+            { SNo: 36, DistrictName: "Dharmapuri", UzhavarSanthai: "Palacode", NoOfShops: 24, From: "4:30 AM", To: "10:30 AM" },
+            { SNo: 37, DistrictName: "Krishnagiri", UzhavarSanthai: "Hosur", NoOfShops: 298, From: "5:00 AM", To: "12:00 PM" },
+            { SNo: 38, DistrictName: "Sivagangai", UzhavarSanthai: "Karaikudi", NoOfShops: 60, From: "6:00 AM", To: "2:00 PM" },
+            { SNo: 39, DistrictName: "Dharmapuri", UzhavarSanthai: "Harur", NoOfShops: 24, From: "5:00 AM", To: "10:00 AM" },
+            { SNo: 40, DistrictName: "Sivagangai", UzhavarSanthai: "Tirupatthur", NoOfShops: 17, From: "6:00 AM", To: "2:00 PM" },
+            { SNo: 41, DistrictName: "Sivagangai", UzhavarSanthai: "Sivagangai", NoOfShops: 57, From: "6:00 AM", To: "2:00 PM" },
+            { SNo: 42, DistrictName: "TheNilgiris", UzhavarSanthai: "Kothagiri", NoOfShops: 24, From: "7:00 AM", To: "2:00 PM" },
+            { SNo: 43, DistrictName: "Coimbatore", UzhavarSanthai: "R.S.Puram", NoOfShops: 170, From: "4:30 AM", To: "11:00 AM" },
+            { SNo: 44, DistrictName: "Krishnagiri", UzhavarSanthai: "Avallapalli", NoOfShops: 20, From: "5:00 AM", To: "12:00 PM" },
+            { SNo: 45, DistrictName: "TheNilgiris", UzhavarSanthai: "Gudalur", NoOfShops: 20, From: "7:00 AM", To: "2:00 PM" },
+            { SNo: 46, DistrictName: "Dharmapuri", UzhavarSanthai: "A.Jattihalli", NoOfShops: 32, From: "4:30 AM", To: "10:30 AM" },
+            { SNo: 47, DistrictName: "Coimbatore", UzhavarSanthai: "Singanallur", NoOfShops: 132, From: "4:30 AM", To: "11:30 AM" },
+            { SNo: 48, DistrictName: "Coimbatore", UzhavarSanthai: "Pollachi", NoOfShops: 80, From: "4:30 AM", To: "11:00 AM" },
+            { SNo: 49, DistrictName: "Coimbatore", UzhavarSanthai: "Mettupalayam", NoOfShops: 78, From: "4:30 AM", To: "11:00 AM" },
+            { SNo: 50, DistrictName: "Coimbatore", UzhavarSanthai: "Vadavalli", NoOfShops: 35, From: "4:30 AM", To: "11:30 AM" },
+            { SNo: 51, DistrictName: "Salem", UzhavarSanthai: "Ammapet", NoOfShops: 60, From: "5:00 AM", To: "10:30 AM" },
+            { SNo: 52, DistrictName: "Virudhunagar", UzhavarSanthai: "Virudhunagar", NoOfShops: 48, From: "6:00 AM", To: "2:00 PM" },
+            { SNo: 53, DistrictName: "Virudhunagar", UzhavarSanthai: "Rajapalayam", NoOfShops: 48, From: "6:00 AM", To: "2:00 PM" },
+            { SNo: 54, DistrictName: "Coimbatore", UzhavarSanthai: "Kurichi", NoOfShops: 60, From: "4:30 AM", To: "11:30 AM" },
+            { SNo: 55, DistrictName: "Coimbatore", UzhavarSanthai: "Sulur", NoOfShops: 40, From: "4:30 AM", To: "11:00 AM" },
+            { SNo: 56, DistrictName: "Tiruppur", UzhavarSanthai: "Tiruppur (North)", NoOfShops: 116, From: "3:00 AM", To: "10:30 AM" },
+            { SNo: 57, DistrictName: "Tiruppur", UzhavarSanthai: "Tiruppur (South)", NoOfShops: 121, From: "3:30 AM", To: "10:00 AM" },
+            { SNo: 58, DistrictName: "Tiruppur", UzhavarSanthai: "Udumalpet", NoOfShops: 64, From: "4:30 AM", To: "10:30 AM" },
+            { SNo: 59, DistrictName: "Thoothukudi", UzhavarSanthai: "Tuticorin", NoOfShops: 80, From: "6:00 AM", To: "2:00 PM" },
+            { SNo: 60, DistrictName: "Thiruvannamalai", UzhavarSanthai: "Tamarainagar", NoOfShops: 20, From: "5:00 AM", To: "1:00 PM" },
+            { SNo: 61, DistrictName: "Thiruvannamalai", UzhavarSanthai: "Keelpennathur", NoOfShops: 18, From: "5:00 AM", To: "1:00 PM" },
+            { SNo: 62, DistrictName: "Tiruppur", UzhavarSanthai: "Palladam", NoOfShops: 30, From: "4:00 AM", To: "11:00 AM" },
+            { SNo: 63, DistrictName: "Thiruvannamalai", UzhavarSanthai: "Chengam", NoOfShops: 26, From: "5:00 AM", To: "1:00 PM" },
+            { SNo: 64, DistrictName: "Virudhunagar", UzhavarSanthai: "Sathur", NoOfShops: 48, From: "6:00 AM", To: "2:00 PM" },
+            { SNo: 65, DistrictName: "Thiruvannamalai", UzhavarSanthai: "Polur", NoOfShops: 41, From: "5:00 AM", To: "1:00 PM" },
+            { SNo: 66, DistrictName: "Thiruvannamalai", UzhavarSanthai: "Arani", NoOfShops: 61, From: "5:00 AM", To: "1:00 PM" },
+            { SNo: 67, DistrictName: "Thiruvannamalai", UzhavarSanthai: "Vandavasi", NoOfShops: 24, From: "5:00 AM", To: "1:00 PM" },
+            { SNo: 68, DistrictName: "Thiruvannamalai", UzhavarSanthai: "Cheyyar", NoOfShops: 40, From: "5:00 AM", To: "1:00 PM" },
+            { SNo: 69, DistrictName: "Virudhunagar", UzhavarSanthai: "Thalavaipuram", NoOfShops: 24, From: "6:00 AM", To: "2:00 PM" },
+            { SNo: 70, DistrictName: "Thoothukudi", UzhavarSanthai: "Kovilpatti", NoOfShops: 80, From: "6:00 AM", To: "2:00 PM" },
+            { SNo: 71, DistrictName: "Pudukkottai", UzhavarSanthai: "Pudukottai", NoOfShops: 103, From: "5:00 AM", To: "1:00 PM" },
+            { SNo: 72, DistrictName: "Virudhunagar", UzhavarSanthai: "Sivakasi", NoOfShops: 54, From: "6:00 AM", To: "2:00 PM" },
+            { SNo: 73, DistrictName: "Pudukkottai", UzhavarSanthai: "Aranthangi", NoOfShops: 40, From: "5:00 AM", To: "1:00 PM" },
+            { SNo: 74, DistrictName: "Madurai", UzhavarSanthai: "Usilampatti", NoOfShops: 72, From: "5:30 AM", To: "1:30 PM" },
+            { SNo: 75, DistrictName: "Salem", UzhavarSanthai: "Thathakapatti", NoOfShops: 170, From: "4:00 AM", To: "10:30 AM" },
+            { SNo: 76, DistrictName: "Pudukkottai", UzhavarSanthai: "Viralimalai", NoOfShops: 20, From: "5:00 AM", To: "1:00 PM" },
+            { SNo: 77, DistrictName: "Madurai", UzhavarSanthai: "Anna nagar", NoOfShops: 108, From: "5:30 AM", To: "1:30 PM" },
+            { SNo: 78, DistrictName: "Madurai", UzhavarSanthai: "Palanganatham", NoOfShops: 72, From: "5:30 AM", To: "1:30 PM" },
+            { SNo: 79, DistrictName: "Madurai", UzhavarSanthai: "Chokkikulam", NoOfShops: 156, From: "5:30 AM", To: "1:30 PM" },
+            { SNo: 80, DistrictName: "Salem", UzhavarSanthai: "Edapadi", NoOfShops: 20, From: "5:00 AM", To: "10:00 AM" },
+            { SNo: 81, DistrictName: "Madurai", UzhavarSanthai: "Thirumangalam", NoOfShops: 80, From: "5:30 AM", To: "1:30 PM" },
+            { SNo: 82, DistrictName: "Madurai", UzhavarSanthai: "Anaiyur", NoOfShops: 45, From: "5:30 AM", To: "1:30 PM" },
+            { SNo: 83, DistrictName: "Salem", UzhavarSanthai: "Athur", NoOfShops: 109, From: "4:00 AM", To: "10:30 AM" },
+            { SNo: 84, DistrictName: "Salem", UzhavarSanthai: "Sooramangalam", NoOfShops: 187, From: "4:00 AM", To: "10:30 AM" },
+            { SNo: 85, DistrictName: "Virudhunagar", UzhavarSanthai: "Srivilliputhur", NoOfShops: 48, From: "6:00 AM", To: "2:00 PM" },
+            { SNo: 86, DistrictName: "Salem", UzhavarSanthai: "Attayampatti", NoOfShops: 48, From: "4:00 AM", To: "10:30 AM" },
+            { SNo: 87, DistrictName: "Salem", UzhavarSanthai: "Mettur", NoOfShops: 80, From: "4:00 AM", To: "12:00 PM" },
+            { SNo: 88, DistrictName: "Salem", UzhavarSanthai: "Hasthampatti", NoOfShops: 69, From: "4:00 AM", To: "10:30 AM" },
+            { SNo: 89, DistrictName: "Madurai", UzhavarSanthai: "Melur", NoOfShops: 46, From: "5:30 AM", To: "1:30 PM" },
+            { SNo: 90, DistrictName: "Salem", UzhavarSanthai: "Elampillai", NoOfShops: 54, From: "4:00 AM", To: "10:30 AM" },
+            { SNo: 91, DistrictName: "Salem", UzhavarSanthai: "Thammampatti", NoOfShops: 24, From: "4:00 AM", To: "10:30 AM" },
+            { SNo: 92, DistrictName: "Salem", UzhavarSanthai: "Jalagandapuram", NoOfShops: 74, From: "4:00 AM", To: "10:30 AM" },
+            { SNo: 93, DistrictName: "Thanjavur", UzhavarSanthai: "Thanjavur", NoOfShops: 71, From: "6:00 AM", To: "1:00 PM" },
+            { SNo: 94, DistrictName: "Thiruvannamalai", UzhavarSanthai: "Tiruvannamalai", NoOfShops: 109, From: "5:00 AM", To: "1:00 PM" },
+            { SNo: 95, DistrictName: "Tiruchirapalli", UzhavarSanthai: "Anna Nagar", NoOfShops: 95, From: "5:00 AM", To: "1:00 PM" },
+            { SNo: 96, DistrictName: "Tiruchirapalli", UzhavarSanthai: "K.K.Nagar", NoOfShops: 77, From: "5:30 AM", To: "1:30 PM" },
+            { SNo: 97, DistrictName: "Tiruchirapalli", UzhavarSanthai: "Thuvakudi", NoOfShops: 24, From: "5:00 AM", To: "1:00 PM" }];
+
+        // Data in Tamil
+        
+
+        // Data in Tamil
+        const tamilData = [
+    { SNo: 1, DistrictName: "திருவள்ளூர்", UzhavarSanthai: "திருத்தணி", NoOfShops: 40, From: "7:00 AM", To: "2:00 PM" },
+    { SNo: 2, DistrictName: "திருவள்ளூர்", UzhavarSanthai: "திருவள்ளூர்", NoOfShops: 28, From: "7:00 AM", To: "4:00 PM" },
+    { SNo: 3, DistrictName: "திருவள்ளூர்", UzhavarSanthai: "அம்பத்தூர்", NoOfShops: 29, From: "7:00 AM", To: "2:00 PM" },
+    { SNo: 4, DistrictName: "திருவள்ளூர்", UzhavarSanthai: "பருத்திப்பட்டு", NoOfShops: 34, From: "7:00 AM", To: "2:00 PM" },
+    { SNo: 5, DistrictName: "திருவள்ளூர்", UzhavarSanthai: "நரவரிகுப்பம்", NoOfShops: 24, From: "7:00 AM", To: "2:00 PM" },
+    { SNo: 6, DistrictName: "திருவள்ளூர்", UzhavarSanthai: "பேரம்பாக்கம்", NoOfShops: 18, From: "7:00 AM", To: "2:00 PM" },
+    { SNo: 7, DistrictName: "நாகப்பட்டினம்", UzhavarSanthai: "நாகப்பட்டினம்", NoOfShops: 50, From: "5:00 AM", To: "12:00 PM" },
+    { SNo: 8, DistrictName: "நாகப்பட்டினம்", UzhavarSanthai: "மயிலாடுதுறை", NoOfShops: 51, From: "5:00 AM", To: "12:00 PM" },
+    { SNo: 9, DistrictName: "நாகப்பட்டினம்", UzhavarSanthai: "சீர்காழி", NoOfShops: 27, From: "5:00 AM", To: "12:00 PM" },
+    { SNo: 10, DistrictName: "தேனி", UzhavarSanthai: "கம்பம்", NoOfShops: 65, From: "5:00 AM", To: "1:00 PM" },
+    { SNo: 11, DistrictName: "தர்மபுரி", UzhavarSanthai: "தர்மபுரி", NoOfShops: 72, From: "4:00 AM", To: "12:00 PM" },
+    { SNo: 12, DistrictName: "தேனி", UzhavarSanthai: "தேவாரம்", NoOfShops: 16, From: "5:00 AM", To: "1:00 PM" },
+    { SNo: 13, DistrictName: "விழுப்புரம்", UzhavarSanthai: "திண்டிவனம்", NoOfShops: 64, From: "5:00 AM", To: "1:00 PM" },
+    { SNo: 14, DistrictName: "தர்மபுரி", UzhavarSanthai: "பென்னாகரம்", NoOfShops: 24, From: "4:30 AM", To: "10:00 AM" },
+    { SNo: 15, DistrictName: "திண்டுக்கல்", UzhavarSanthai: "திண்டுக்கல்", NoOfShops: 85, From: "4:00 AM", To: "11:00 AM" },
+    { SNo: 16, DistrictName: "தேனி", UzhavarSanthai: "பெரியகுளம்", NoOfShops: 35, From: "5:00 AM", To: "1:00 PM" },
+    { SNo: 17, DistrictName: "விழுப்புரம்", UzhavarSanthai: "விழுப்புரம்", NoOfShops: 48, From: "5:00 AM", To: "1:00 PM" },
+    { SNo: 18, DistrictName: "நாமக்கல்", UzhavarSanthai: "நாமக்கல்", NoOfShops: 134, From: "4:00 AM", To: "12:00 PM" },
+    { SNo: 19, DistrictName: "கள்ளக்குறிச்சி", UzhavarSanthai: "கள்ளக்குறிச்சி", NoOfShops: 90, From: "5:00 AM", To: "1:00 PM" },
+    { SNo: 20, DistrictName: "கோயம்புத்தூர்", UzhavarSanthai: "சுந்தராபுரம்", NoOfShops: 32, From: "4:30 AM", To: "11:30 AM" },
+    { SNo: 21, DistrictName: "கள்ளக்குறிச்சி", UzhavarSanthai: "உளுந்தூர்பேட்டை", NoOfShops: 80, From: "5:00 AM", To: "1:00 PM" },
+    { SNo: 22, DistrictName: "நாமக்கல்", UzhavarSanthai: "திருச்செங்கோடு", NoOfShops: 84, From: "4:00 AM", To: "12:00 PM" },
+    { SNo: 23, DistrictName: "திண்டுக்கல்", UzhavarSanthai: "பழனி", NoOfShops: 119, From: "4:00 AM", To: "11:00 AM" },
+    { SNo: 24, DistrictName: "நீலகிரி", UzhavarSanthai: "உதகமண்டலம்", NoOfShops: 82, From: "7:00 AM", To: "2:00 PM" },
+    { SNo: 25, DistrictName: "நாமக்கல்", UzhavarSanthai: "ராசிபுரம்", NoOfShops: 84, From: "4:00 AM", To: "12:00 PM" },
+    { SNo: 26, DistrictName: "விழுப்புரம்", UzhavarSanthai: "செஞ்சி", NoOfShops: 24, From: "5:00 AM", To: "1:00 PM" },
+    { SNo: 27, DistrictName: "கள்ளக்குறிச்சி", UzhavarSanthai: "சங்கராபுரம்", NoOfShops: 37, From: "5:00 AM", To: "1:00 PM" },
+    { SNo: 28, DistrictName: "திண்டுக்கல்", UzhavarSanthai: "சின்னாலபட்டி", NoOfShops: 30, From: "6:00 AM", To: "11:00 AM" },
+    { SNo: 29, DistrictName: "திண்டுக்கல்", UzhavarSanthai: "பத்தலகுண்டு", NoOfShops: 54, From: "6:00 AM", To: "10:00 AM" },
+    { SNo: 30, DistrictName: "நாமக்கல்", UzhavarSanthai: "குமாரபாளையம்", NoOfShops: 62, From: "4:00 AM", To: "12:00 PM" },
+    { SNo: 31, DistrictName: "நீலகிரி", UzhavarSanthai: "குன்னூர்", NoOfShops: 60, From: "7:00 AM", To: "2:00 PM" },
+    { SNo: 32, DistrictName: "திண்டுக்கல்", UzhavarSanthai: "கொடைக்கானல்", NoOfShops: 24, From: "6:00 AM", To: "10:00 AM" },
+    { SNo: 33, DistrictName: "நாமக்கல்", UzhavarSanthai: "பரமத்திவேலூர்", NoOfShops: 24, From: "4:00 AM", To: "12:00 PM" },
+    { SNo: 34, DistrictName: "சிவகங்கை", UzhavarSanthai: "தேவகோட்டை", NoOfShops: 40, From: "6:00 AM", To: "2:00 PM" },
+    { SNo: 35, DistrictName: "நாமக்கல்", UzhavarSanthai: "மோகனூர்", NoOfShops: 24, From: "4:00 AM", To: "12:00 PM" },
+    { SNo: 36, DistrictName: "தர்மபுரி", UzhavarSanthai: "பாலாக்கோடு", NoOfShops: 24, From: "4:30 AM", To: "10:30 AM" },
+    { SNo: 37, DistrictName: "கிருஷ்ணகிரி", UzhavarSanthai: "ஓசூர்", NoOfShops: 298, From: "5:00 AM", To: "12:00 PM" },
+    { SNo: 38, DistrictName: "சிவகங்கை", UzhavarSanthai: "காரைக்குடி", NoOfShops: 60, From: "6:00 AM", To: "2:00 PM" },
+    { SNo: 39, DistrictName: "தர்மபுரி", UzhavarSanthai: "அரூர்", NoOfShops: 24, From: "5:00 AM", To: "10:00 AM" },
+    { SNo: 40, DistrictName: "சிவகங்கை", UzhavarSanthai: "திருப்பத்தூர்", NoOfShops: 17, From: "6:00 AM", To: "2:00 PM" },
+    { SNo: 41, DistrictName: "சிவகங்கை", UzhavarSanthai: "சிவகங்கை", NoOfShops: 57, From: "6:00 AM", To: "2:00 PM" },
+    { SNo: 42, DistrictName: "நீலகிரி", UzhavarSanthai: "கோத்தகிரி", NoOfShops: 24, From: "7:00 AM", To: "2:00 PM" },
+    { SNo: 43, DistrictName: "கோயம்புத்தூர்", UzhavarSanthai: "ஆர்.எஸ்.புரம்", NoOfShops: 170, From: "4:30 AM", To: "11:00 AM" },
+    { SNo: 44, DistrictName: "கிருஷ்ணகிரி", UzhavarSanthai: "அவள்ளப்பள்ளி", NoOfShops: 20, From: "5:00 AM", To: "12:00 PM" },
+    { SNo: 45, DistrictName: "நீலகிரி", UzhavarSanthai: "கூடலூர்", NoOfShops: 20, From: "7:00 AM", To: "2:00 PM" },
+    { SNo: 46, DistrictName: "தர்மபுரி", UzhavarSanthai: "ஏ.ஜட்டிஹள்ளி", NoOfShops: 32, From: "4:30 AM", To: "10:30 AM" },
+    { SNo: 47, DistrictName: "கோயம்புத்தூர்", UzhavarSanthai: "சிங்கநல்லூர்", NoOfShops: 132, From: "4:30 AM", To: "11:30 AM" },
+    { SNo: 48, DistrictName: "கோயம்புத்தூர்", UzhavarSanthai: "பொள்ளாச்சி", NoOfShops: 80, From: "4:30 AM", To: "11:00 AM" },
+    { SNo: 49, DistrictName: "கோயம்புத்தூர்", UzhavarSanthai: "மேட்டுப்பாளையம்", NoOfShops: 78, From: "4:30 AM", To: "11:00 AM" },
+    { SNo: 50, DistrictName: "கோயம்புத்தூர்", UzhavarSanthai: "வடவள்ளி", NoOfShops: 35, From: "4:30 AM", To: "11:30 AM" },
+    { SNo: 51, DistrictName: "சேலம்", UzhavarSanthai: "அம்மாபேட்டை", NoOfShops: 60, From: "5:00 AM", To: "10:30 AM" },
+    { SNo: 52, DistrictName: "விருதுநகர்", UzhavarSanthai: "விருதுநகர்", NoOfShops: 48, From: "6:00 AM", To: "2:00 PM" },
+    { SNo: 53, DistrictName: "விருதுநகர்", UzhavarSanthai: "ராஜபாளையம்", NoOfShops: 48, From: "6:00 AM", To: "2:00 PM" },
+    { SNo: 54, DistrictName: "கோயம்புத்தூர்", UzhavarSanthai: "குறிச்சி", NoOfShops: 60, From: "4:30 AM", To: "11:30 AM" },
+    { SNo: 55, DistrictName: "கோயம்புத்தூர்", UzhavarSanthai: "சூலூர்", NoOfShops: 40, From: "4:30 AM", To: "11:00 AM" },
+    { SNo: 56, DistrictName: "திருப்பூர்", UzhavarSanthai: "திருப்பூர் (வடக்கு)", NoOfShops: 116, From: "3:00 AM", To: "10:30 AM" },
+    { SNo: 57, DistrictName: "திருப்பூர்", UzhavarSanthai: "திருப்பூர் (தெற்கு)", NoOfShops: 121, From: "3:30 AM", To: "10:00 AM" },
+    { SNo: 58, DistrictName: "திருப்பூர்", UzhavarSanthai: "உடுமலைப்பேட்டை", NoOfShops: 64, From: "4:30 AM", To: "10:30 AM" },
+    { SNo: 59, DistrictName: "தூத்துக்குடி", UzhavarSanthai: "தூத்துக்குடி", NoOfShops: 80, From: "6:00 AM", To: "2:00 PM" },
+    { SNo: 60, DistrictName: "திருவண்ணாமலை", UzhavarSanthai: "தாமரைநகர்", NoOfShops: 20, From: "5:00 AM", To: "1:00 PM" },
+    { SNo: 61, DistrictName: "திருவண்ணாமலை", UzhavarSanthai: "கீழ்பென்னாத்தூர்", NoOfShops: 18, From: "5:00 AM", To: "1:00 PM" },
+    { SNo: 62, DistrictName: "திருப்பூர்", UzhavarSanthai: "பல்லடம்", NoOfShops: 30, From: "4:00 AM", To: "11:00 AM" },
+    { SNo: 63, DistrictName: "திருவண்ணாமலை", UzhavarSanthai: "செங்கம்", NoOfShops: 26, From: "5:00 AM", To: "1:00 PM" },
+    { SNo: 64, DistrictName: "விருதுநகர்", UzhavarSanthai: "சாத்தூர்", NoOfShops: 48, From: "6:00 AM", To: "2:00 PM" },
+    { SNo: 65, DistrictName: "திருவண்ணாமலை", UzhavarSanthai: "போளூர்", NoOfShops: 41, From: "5:00 AM", To: "1:00 PM" },
+    { SNo: 66, DistrictName: "திருவண்ணாமலை", UzhavarSanthai: "ஆரணி", NoOfShops: 61, From: "5:00 AM", To: "1:00 PM" },
+    { SNo: 67, DistrictName: "திருவண்ணாமலை", UzhavarSanthai: "வந்தவாசி", NoOfShops: 24, From: "5:00 AM", To: "1:00 PM" },
+    { SNo: 68, DistrictName: "திருவண்ணாமலை", UzhavarSanthai: "செய்யார்", NoOfShops: 40, From: "5:00 AM", To: "1:00 PM" },
+    { SNo: 69, DistrictName: "விருதுநகர்", UzhavarSanthai: "தலவைபுரம்", NoOfShops: 24, From: "6:00 AM", To: "2:00 PM" },
+    { SNo: 70, DistrictName: "தூத்துக்குடி", UzhavarSanthai: "கோவில்பட்டி", NoOfShops: 80, From: "6:00 AM", To: "2:00 PM" },
+    { SNo: 71, DistrictName: "புதுக்கோட்டை", UzhavarSanthai: "புதுக்கோட்டை", NoOfShops: 103, From: "5:00 AM", To: "1:00 PM" },
+    { SNo: 72, DistrictName: "விருதுநகர்", UzhavarSanthai: "சிவகாசி", NoOfShops: 54, From: "6:00 AM", To: "2:00 PM" },
+    { SNo: 73, DistrictName: "புதுக்கோட்டை", UzhavarSanthai: "அறந்தாங்கி", NoOfShops: 40, From: "5:00 AM", To: "1:00 PM" },
+    { SNo: 74, DistrictName: "மதுரை", UzhavarSanthai: "உசிலம்பட்டி", NoOfShops: 72, From: "5:30 AM", To: "1:30 PM" },
+    { SNo: 75, DistrictName: "சேலம்", UzhavarSanthai: "தாதகாப்பட்டி", NoOfShops: 170, From: "4:00 AM", To: "10:30 AM" },
+    { SNo: 76, DistrictName: "புதுக்கோட்டை", UzhavarSanthai: "விராலிமலை", NoOfShops: 20, From: "5:00 AM", To: "1:00 PM" },
+    { SNo: 77, DistrictName: "மதுரை", UzhavarSanthai: "அண்ணா நகர்", NoOfShops: 108, From: "5:30 AM", To: "1:30 PM" },
+    { SNo: 78, DistrictName: "மதுரை", UzhavarSanthai: "பாலங்கநாதம்", NoOfShops: 72, From: "5:30 AM", To: "1:30 PM" },
+    { SNo: 79, DistrictName: "மதுரை", UzhavarSanthai: "சொக்கிகுளம்", NoOfShops: 156, From: "5:30 AM", To: "1:30 PM" },
+    { SNo: 80, DistrictName: "சேலம்", UzhavarSanthai: "எடப்பாடி", NoOfShops: 20, From: "5:00 AM", To: "10:00 AM" },
+    { SNo: 81, DistrictName: "மதுரை", UzhavarSanthai: "திருமங்கலம்", NoOfShops: 80, From: "5:30 AM", To: "1:30 PM" },
+    { SNo: 82, DistrictName: "மதுரை", UzhavarSanthai: "அணையூர்", NoOfShops: 45, From: "5:30 AM", To: "1:30 PM" },
+    { SNo: 83, DistrictName: "சேலம்", UzhavarSanthai: "ஆத்தூர்", NoOfShops: 109, From: "4:00 AM", To: "10:30 AM" },
+    { SNo: 84, DistrictName: "சேலம்", UzhavarSanthai: "சூரமங்கலம்", NoOfShops: 187, From: "4:00 AM", To: "10:30 AM" },
+    { SNo: 85, DistrictName: "விருதுநகர்", UzhavarSanthai: "ஸ்ரீவில்லிபுத்தூர்", NoOfShops: 48, From: "6:00 AM", To: "2:00 PM" },
+    { SNo: 86, DistrictName: "சேலம்", UzhavarSanthai: "அட்டையம்பட்டி", NoOfShops: 48, From: "4:00 AM", To: "10:30 AM" },
+    { SNo: 87, DistrictName: "சேலம்", UzhavarSanthai: "மேட்டூர்", NoOfShops: 80, From: "4:00 AM", To: "12:00 PM" },
+    { SNo: 88, DistrictName: "சேலம்", UzhavarSanthai: "ஹாஸ்டம்பட்டி", NoOfShops: 69, From: "4:00 AM", To: "10:30 AM" },
+    { SNo: 89, DistrictName: "மதுரை", UzhavarSanthai: "மேலூர்", NoOfShops: 46, From: "5:30 AM", To: "1:30 PM" },
+    { SNo: 90, DistrictName: "சேலம்", UzhavarSanthai: "இளம்பில்லை", NoOfShops: 54, From: "4:00 AM", To: "10:30 AM" },
+    { SNo: 91, DistrictName: "சேலம்", UzhavarSanthai: "தம்மம்பட்டி", NoOfShops: 24, From: "4:00 AM", To: "10:30 AM" },
+    { SNo: 92, DistrictName: "சேலம்", UzhavarSanthai: "ஜலகண்டபுரம்", NoOfShops: 74, From: "4:00 AM", To: "10:30 AM" },
+    { SNo: 93, DistrictName: "தஞ்சாவூர்", UzhavarSanthai: "தஞ்சாவூர்", NoOfShops: 71, From: "6:00 AM", To: "1:00 PM" },
+    { SNo: 94, DistrictName: "திருவண்ணாமலை", UzhavarSanthai: "திருவண்ணாமலை", NoOfShops: 109, From: "5:00 AM", To: "1:00 PM" },
+    { SNo: 95, DistrictName: "திருச்சிராப்பள்ளி", UzhavarSanthai: "அண்ணா நகர்", NoOfShops: 95, From: "5:00 AM", To: "1:00 PM" },
+    { SNo: 96, DistrictName: "திருச்சிராப்பள்ளி", UzhavarSanthai: "கே.கே.நகர்", NoOfShops: 77, From: "5:30 AM", To: "1:30 PM" },
+    { SNo: 97, DistrictName: "திருச்சிராப்பள்ளி", UzhavarSanthai: "துவாக்குடி", NoOfShops: 24, From: "5:00 AM", To: "1:00 PM" }
+];
+
+        const table = document.getElementById('uzhavarSanthaiTable').getElementsByTagName('tbody')[0];
+        const pagination = document.getElementById('pagination');
+        const languageBtn = document.getElementById('languageBtn');
+        const itemsPerPage = 10;
+        let currentPage = 1;
+        let currentLanguage = 'english'; // Default language
+
+        // Function to display table data
+        function displayTableData(page, language) {
+            table.innerHTML = ''; // Clear existing data
+
+            const data = language === 'english' ? englishData : tamilData;
+            const startIndex = (page - 1) * itemsPerPage;
+            const endIndex = Math.min(startIndex + itemsPerPage, data.length);
+
+            for (let i = startIndex; i < endIndex; i++) {
+                const item = data[i];
+                const row = table.insertRow();
+
+                // Insert cells with data
+                const cells = [item.SNo, item.DistrictName, item.UzhavarSanthai, item.NoOfShops, item.From, item.To];
+                cells.forEach(cellText => {
+                    const cell = row.insertCell();
+                    cell.textContent = cellText;
+                });
+            }
+        }
+
+        // Function to display pagination
+        function displayPagination(language) {
+            const data = language === 'english' ? englishData : tamilData;
+            const totalPages = Math.ceil(data.length / itemsPerPage);
+
+            pagination.innerHTML = ''; // Clear existing buttons
+
+            for (let i = 1; i <= totalPages; i++) {
+                const button = document.createElement('button');
+                button.textContent = i;
+                button.addEventListener('click', () => {
+                    currentPage = i;
+                    displayTableData(currentPage, currentLanguage);
+                    updateActiveButton();
+                });
+                pagination.appendChild(button);
+            }
+            updateActiveButton();
+        }
+
+        // Function to update active pagination button
+        function updateActiveButton() {
+            const buttons = pagination.querySelectorAll('button');
+            buttons.forEach(button => button.classList.remove('active'));
+            buttons[currentPage - 1].classList.add('active');
+        }
+
+        // Function to update table headers and heading based on language
+        function updateLanguage(language) {
+            const heading = document.getElementById('tableHeading');
+            const snoHeader = document.getElementById('snoHeader');
+            const districtHeader = document.getElementById('districtHeader');
+            const santhaiHeader = document.getElementById('santhaiHeader');
+            const shopsHeader = document.getElementById('shopsHeader');
+            const fromHeader = document.getElementById('fromHeader');
+            const toHeader = document.getElementById('toHeader');
+
+            if (language === 'english') {
+                heading.textContent = 'Uzhavar Santhai Information';
+                snoHeader.textContent = 'S.No';
+                districtHeader.textContent = 'District Name';
+                santhaiHeader.textContent = 'Uzhavar Santhai';
+                shopsHeader.textContent = 'No of Shops';
+                fromHeader.textContent = 'Working Hours From';
+                toHeader.textContent = 'Working Hours To';
+                languageBtn.textContent = 'தமிழ்'; // Update button text
+            } else {
+                heading.textContent = 'உழவர் சந்தை தகவல்';
+                snoHeader.textContent = 'வரிசை எண்';
+                districtHeader.textContent = 'மாவட்டம்';
+                santhaiHeader.textContent = 'உழவர் சந்தை';
+                shopsHeader.textContent = 'கடைகளின் எண்ணிக்கை';
+                fromHeader.textContent = 'பணி நேரம் (இருந்து)';
+                toHeader.textContent = 'பணி நேரம் (வரை)';
+                languageBtn.textContent = 'English'; // Update button text
+            }
+        }
+
+        // Event listener for language toggle button
+        languageBtn.addEventListener('click', () => {
+            currentLanguage = currentLanguage === 'english' ? 'tamil' : 'english'; // Toggle language
+            displayTableData(currentPage, currentLanguage);
+            displayPagination(currentLanguage);
+            updateLanguage(currentLanguage);
+        });
+
+        // Initial load
+        displayTableData(currentPage, currentLanguage);
+        displayPagination(currentLanguage);
+        updateLanguage(currentLanguage);
+    </script>
+    <div class="container5">
+        <div class="chatbox">
+            <div class="chatbox__support">
+                <div class="chatbox__header">
+                    <div class="chatbox__image--header" style="width: 80px;">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRqwQyIAeQrwasS_huhTdl8h9PutobquVFvQw&s" alt="image" style="height: 80%;width: 80%; border-radius: 75px;">
+                    </div>
+                    <div class="chatbox__content--header">
+                        <h4 class="chatbox__heading--header">Chat support</h4>
+                        <p class="chatbox__description--header">Hi. My name is santhru How can I help you?</p>
+                    </div>
+                </div>
+                <div class="chatbox__messages">
+                    <div></div>
+                </div>
+                <div class="chatbox__footer">
+                    <input type="text" placeholder="Write a message...">
+                    <button class="chatbox__send--footer send__button">Send</button>
+                </div>
+            </div>
+            <div class="chatbox__button">
+                <button><img src="./chatbot_images/chatbox-icon.svg" style="height: 120%;width: 120%;"/></button>
+            </div>
+        </div>
+    </div>
+    
+    
+       <script src="app.js"></script>
+</body>
+</html>

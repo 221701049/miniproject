@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ta">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>காய்கறி விலை பகுப்பாய்வு</title>
+    <link rel="stylesheet" href="4.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <nav>
+        <ul>
+            <img src="logo2.ico" alt="hello" width="100px" height="100px">
+            <li><a href="htm.html" class="lang-text" data-en="Home" data-ta="முகப்பு">முகப்பு</a></li>
+            <li><a href="2.html" class="lang-text" data-en="About" data-ta="பற்றி">பற்றி</a></li>
+            <li><a href="4.html" class="lang-text" data-en="Data" data-ta="தரவு">தரவு</a></li>
+            <li><a href="3.html" class="lang-text" data-en="Market Count" data-ta="உழவர் சந்தை எண்ணிக்கை">உழவர் சந்தை எண்ணிக்கை</a></li>
+            <li><button id="language-toggle">தமிழ்</button></li>
+        </ul>
+    </nav>
+    <div class="container">
+        <h1 class="lang-text" data-en="Vegetable Price Analysis" data-ta="காய்கறி விலை பகுப்பாய்வு">காய்கறி விலை பகுப்பாய்வு</h1>
+        <form id="analysisForm">
+            <div class="form-group">
+                <label for="vegetable" class="lang-text" data-en="Vegetable:" data-ta="காய்கறி:">காய்கறி:</label>
+                <select id="vegetable" name="vegetable" required>
+                    <option value="">காய்கறியைத் தேர்ந்தெடுக்கவும்</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="district" class="lang-text" data-en="District:" data-ta="மாவட்டம்:">மாவட்டம்:</label>
+                <select id="district" name="district" required>
+                    <option value="">மாவட்டத்தைத் தேர்ந்தெடுக்கவும்</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="market" class="lang-text" data-en="Market:" data-ta="சந்தை:">சந்தை:</label>
+                <select id="market" name="market" required>
+                    <option value="">சந்தையைத் தேர்ந்தெடுக்கவும்</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="month" class="lang-text" data-en="Select Month:" data-ta="மாதத்தைத் தேர்ந்தெடுக்கவும்:">மாதத்தைத் தேர்ந்தெடுக்கவும்:</label>
+                <select id="month" name="month">
+                    <option value="">அனைத்தும்</option>
+                    <option value="January">ஜனவரி</option>
+                    <option value="February">பிப்ரவரி</option>
+                    <option value="March">மார்ச்</option>
+                    <option value="April">ஏப்ரல்</option>
+                    <option value="May">மே</option>
+                    <option value="June">ஜூன்</option>
+                    <option value="July">ஜூலை</option>
+                    <option value="August">ஆகஸ்ட்</option>
+                    <option value="September">செப்டம்பர்</option>
+                    <option value="October">அக்டோபர்</option>
+                    <option value="November">நவம்பர்</option>
+                    <option value="December">டிசம்பர்</option>
+                </select>
+            </div>
+            <button type="submit" class="lang-text" data-en="Analyze" data-ta="பகுப்பாய்வு செய்">பகுப்பாய்வு செய்</button>
+        </form>
+
+        <h2 class="lang-text" data-en="Price Trend" data-ta="விலை போக்கு">விலை போக்கு</h2>
+        <canvas id="priceChart" width="400" height="200"></canvas>
+
+        <h2 class="lang-text" data-en="Monthly Summary" data-ta="மாதாந்திர சுருக்கம்">மாதாந்திர சுருக்கம்</h2>
+        <div id="summary"></div>
+    </div>
+
+    <script src="4.js"></script>
+    <div class="container5">
+        <div class="chatbox">
+            <div class="chatbox__support">
+                <div class="chatbox__header">
+                    <div class="chatbox__image--header" style="width: 80px;">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRqwQyIAeQrwasS_huhTdl8h9PutobquVFvQw&s" alt="image" style="height: 80%;width: 80%; border-radius: 75px;">
+                    </div>
+                    <div class="chatbox__content--header">
+                        <h4 class="chatbox__heading--header">Chat support</h4>
+                        <p class="chatbox__description--header">Hi. My name is santhru How can I help you?</p>
+                    </div>
+                </div>
+                <div class="chatbox__messages">
+                    <div></div>
+                </div>
+                <div class="chatbox__footer">
+                    <input type="text" placeholder="Write a message...">
+                    <button class="chatbox__send--footer send__button">Send</button>
+                </div>
+            </div>
+            <div class="chatbox__button">
+                <button><img src="./chatbot_images/chatbox-icon.svg" style="height: 120%;width: 120%;"/></button>
+            </div>
+        </div>
+    </div>
+    
+    
+       <script src="app.js"></script>
+</body>
+</html>

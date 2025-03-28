@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="ta">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>உழவர் சந்தை - பற்றி</title>
+    <link rel="stylesheet" href="about.css">
+</head>
+<body>
+    <header>
+        <h1 id="title">தமிழ்நாடு அரசு உழவர் சந்தை</h1>        
+        <nav>
+            <ul>
+                <img src="logo2.ico" alt="hello" width="100px" height="100px">
+                <li><a href="htm.html" id="home">முகப்பு</a></li>
+                <li><a href="2.html" id="about">பற்றி</a></li>
+                <li><a href="4.html" id="data">தரவு</a></li>
+                <li><a href="3.html" id="count">உழவர் சந்தை எண்ணிக்கை</a></li>
+                <li> <button id="languageBtn">English</button></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="about-section">
+            <h2 id="about-title">உழவர் சந்தை பற்றி</h2>
+            <p id="para1">
+                தமிழ்நாடு அரசின் உழவர் சந்தை திட்டம், விவசாயிகளுக்கும் நுகர்வோருக்கும் இடையே நேரடியான தொடர்பை ஏற்படுத்துவதை நோக்கமாகக் கொண்டுள்ளது. 
+                இத்திட்டத்தின் மூலம், விவசாயிகள் தங்கள் பொருட்களை நடுத்தரவர்க்கத்தைத் தவிர்த்து நேரடியாக விற்கலாம், இதனால் அவர்களுக்கு சிறந்த விலை கிடைக்கும். 
+                மேலும், நுகர்வோருக்கு புதிய மற்றும் தரமான காய்கறிகள் மற்றும் பழங்களை சிறந்த விலையில் பெறுவதற்கான வாய்ப்பு உள்ளது.
+            </p>
+            <p id="para2">
+                உழவர் சந்தையில், விவசாயிகள் தங்கள் பொருட்களை பதிவு செய்து, நேரடியாக விற்பனை செய்யலாம். 
+                இந்த திட்டம் விவசாயிகளுக்கு நியாயமான விலை மற்றும் நுகர்வோருக்கு தரமான பொருட்களை உறுதி செய்கிறது. 
+                இது விவசாயிகளின் வருமானத்தை அதிகரிக்கும் ஒரு முக்கியமான முயற்சியாகும்.
+            </p>
+            <h3 id="goal-title">உழவர் சந்தையின் நோக்கம்</h3>
+            <ul id="goal-list">
+                <li>விவசாயிகளுக்கு நேரடியான சந்தை வாய்ப்புகளை வழங்குதல்.</li>
+                <li>நுகர்வோருக்கு தரமான மற்றும் புதிய பொருட்களை சிறந்த விலையில் வழங்குதல்.</li>
+                <li>விவசாயிகளின் வருமானத்தை அதிகரித்தல்.</li>
+                <li>போக்குவரத்து மற்றும் இடைத்தரகர்களின் செலவுகளை குறைத்தல்.</li>
+            </ul>
+        </section>
+    </main>
+
+    <footer>
+        <p id="footer-text">&copy; 2025 தமிழ்நாடு அரசு உழவர் சந்தை. அனைத்து உரிமைகளும் பாதுகாக்கப்பட்டவை.</p>
+    </footer>
+
+    <script>
+        const languageBtn = document.getElementById("languageBtn");
+
+        const tamilContent = {
+            title: "தமிழ்நாடு அரசு உழவர் சந்தை",
+            home: "முகப்பு",
+            about: "பற்றி",
+            data: "தரவு",
+            count: "உழவர் சந்தை எண்ணிக்கை",
+            aboutTitle: "உழவர் சந்தை பற்றி",
+            para1: "தமிழ்நாடு அரசின் உழவர் சந்தை திட்டம், விவசாயிகளுக்கும் நுகர்வோருக்கும் இடையே நேரடியான தொடர்பை ஏற்படுத்துவதை நோக்கமாகக் கொண்டுள்ளது. இத்திட்டத்தின் மூலம், விவசாயிகள் தங்கள் பொருட்களை நடுத்தரவர்க்கத்தைத் தவிர்த்து நேரடியாக விற்கலாம், இதனால் அவர்களுக்கு சிறந்த விலை கிடைக்கும். மேலும், நுகர்வோருக்கு புதிய மற்றும் தரமான காய்கறிகள் மற்றும் பழங்களை சிறந்த விலையில் பெறுவதற்கான வாய்ப்பு உள்ளது.",
+            para2: "உழவர் சந்தையில், விவசாயிகள் தங்கள் பொருட்களை பதிவு செய்து, நேரடியாக விற்பனை செய்யலாம். இந்த திட்டம் விவசாயிகளுக்கு நியாயமான விலை மற்றும் நுகர்வோருக்கு தரமான பொருட்களை உறுதி செய்கிறது. இது விவசாயிகளின் வருமானத்தை அதிகரிக்கும் ஒரு முக்கியமான முயற்சியாகும்.",
+            goalTitle: "உழவர் சந்தையின் நோக்கம்",
+            goalList: `
+                <li>விவசாயிகளுக்கு நேரடியான சந்தை வாய்ப்புகளை வழங்குதல்.</li>
+                <li>நுகர்வோருக்கு தரமான மற்றும் புதிய பொருட்களை சிறந்த விலையில் வழங்குதல்.</li>
+                <li>விவசாயிகளின் வருமானத்தை அதிகரித்தல்.</li>
+                <li>போக்குவரத்து மற்றும் இடைத்தரகர்களின் செலவுகளை குறைத்தல்.</li>
+            `,
+            footerText: "&copy; 2025 தமிழ்நாடு அரசு உழவர் சந்தை. அனைத்து உரிமைகளும் பாதுகாக்கப்பட்டவை."
+        };
+
+        const englishContent = {
+            title: "Tamil Nadu Government Uzhavar Sandhai",
+            home: "Home",
+            about: "About",
+            data: "Data",
+            count: "Market Count",
+            aboutTitle: "About Uzhavar Sandhai",
+            para1: "The Tamil Nadu Government’s Uzhavar Sandhai scheme aims to establish a direct connection between farmers and consumers. Through this scheme, farmers can sell their products directly, bypassing middlemen, thus securing better prices. Consumers also benefit by getting fresh and quality vegetables and fruits at reasonable prices.",
+            para2: "In Uzhavar Sandhai, farmers can register their products and sell directly. This initiative ensures fair prices for farmers and quality products for consumers. It plays a crucial role in increasing farmers’ income.",
+            goalTitle: "Objectives of Uzhavar Sandhai",
+            goalList: `
+                <li>Providing direct market opportunities for farmers.</li>
+                <li>Ensuring quality and fresh products at the best prices for consumers.</li>
+                <li>Increasing the income of farmers.</li>
+                <li>Reducing transportation and middleman costs.</li>
+            `,
+            footerText: "&copy; 2025 Tamil Nadu Government Uzhavar Sandhai. All rights reserved."
+        };
+
+        let isTamil = true;
+
+        languageBtn.addEventListener("click", () => {
+            if (isTamil) {
+                document.getElementById("title").innerText = englishContent.title;
+                document.getElementById("home").innerText = englishContent.home;
+                document.getElementById("about").innerText = englishContent.about;
+                document.getElementById("data").innerText = englishContent.data;
+                document.getElementById("count").innerText = englishContent.count;
+                document.getElementById("about-title").innerText = englishContent.aboutTitle;
+                document.getElementById("para1").innerText = englishContent.para1;
+                document.getElementById("para2").innerText = englishContent.para2;
+                document.getElementById("goal-title").innerText = englishContent.goalTitle;
+                document.getElementById("goal-list").innerHTML = englishContent.goalList;
+                document.getElementById("footer-text").innerHTML = englishContent.footerText;
+                languageBtn.innerText = "தமிழ்";
+                isTamil = false;
+            } else {
+                Object.keys(tamilContent).forEach(key => {
+                    document.getElementById(key).innerHTML = tamilContent[key];
+                });
+                languageBtn.innerText = "English";
+                isTamil = true;
+            }
+        });
+    </script>
+
+<div class="container5">
+    <div class="chatbox">
+        <div class="chatbox__support">
+            <div class="chatbox__header">
+                <div class="chatbox__image--header" style="width: 80px;">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRqwQyIAeQrwasS_huhTdl8h9PutobquVFvQw&s" alt="image" style="height: 80%;width: 80%; border-radius: 75px;">
+                </div>
+                <div class="chatbox__content--header">
+                    <h4 class="chatbox__heading--header">Chat support</h4>
+                    <p class="chatbox__description--header">Hi. My name is santhru How can I help you?</p>
+                </div>
+            </div>
+            <div class="chatbox__messages">
+                <div></div>
+            </div>
+            <div class="chatbox__footer">
+                <input type="text" placeholder="Write a message...">
+                <button class="chatbox__send--footer send__button">Send</button>
+            </div>
+        </div>
+        <div class="chatbox__button">
+            <button><img src="./chatbot_images/chatbox-icon.svg" style="height: 120%;width: 120%;"/></button>
+        </div>
+    </div>
+</div>
+
+
+   <script src="app.js"></script>
+</body>
+</html>

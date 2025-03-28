@@ -1,0 +1,97 @@
+
+<!DOCTYPE html>
+<html lang="ta">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>காய்கறி தேடல்</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="original.js"></script> 
+</head>
+<body>
+   
+    
+    <div><div id="results"></div></div>
+<nav>
+    <ul>
+        <img src="logo2.ico" alt="hello" class="logo-png" height="1800px"width="120px"/>
+        <li><a href="htm.html" class="lang-text" data-en="Home" data-ta="முகப்பு">முகப்பு</a></li>
+        <li><a href="2.html" class="lang-text" data-en="About" data-ta="பற்றி">பற்றி</a></li>
+        <li><a href="4.html" class="lang-text" data-en="Data" data-ta="தரவு">தரவு</a></li>
+        <li><a href="3.html" class="lang-text" data-en="Market Count" data-ta="உழவர் சந்தை எண்ணிக்கை">உழவர் சந்தை எண்ணிக்கை</a></li>
+        <li><button id="language-toggle">English</button></li>
+    </ul>
+</nav>
+
+<div class="container">
+    
+    <div class="left-container">
+        <h1 class="lang-text" data-en="Vegetable Search" data-ta="காய்கறி தேடல்">காய்கறி தேடல்</h1>
+            <label for="vegetable-select" class="lang-text" data-en="Choose a Vegetable" data-ta="காய்கறியைத் தேர்ந்தெடுக்கவும்"></label>
+    <select id="vegetable-select" class="lang-option">
+    <option value="" disabled selected>காய்கறியைத் தேர்ந்தெடுக்கவும்</option>
+    <option data-en="Tomato" data-ta="தக்காளி">தக்காளி</option>
+    <option data-en="Radish" data-ta="முள்ளங்கி">முள்ளங்கி</option>
+    <option data-en="Potato" data-ta="உருளைக்கிழங்கு">உருளைக்கிழங்கு</option> 
+    <option data-en="carrot" data-ta="கேரட்">கேரட்</option>   
+
+    
+</select>
+            <select id="district-select">
+                <option value="" disabled selected>மாவட்டத்தைத் தேர்ந்தெடுக்கவும்</option>
+                <option value="தர்மபுரி">தர்மபுரி</option>
+                <option value="சேலம்">சேலம்</option>
+                <option value="மதுரை">மதுரை</option>
+                <option value="காஞ்சிபுரம்">காஞ்சிபுரம்</option>
+                <option value="சென்னை">சென்னை</option>
+            </select>
+
+        <select id="market-select">
+            <option value="">சந்தையைத் தேர்ந்தெடு</option>
+        </select>
+
+            <!-- Date Input Field -->
+             <input type="date" id="date-input">
+           <a href="#"><button id="submit-btn">தேடு</button></a>   
+  
+    </div>
+    <div class="right-container">
+        <h1 class="lang-text1" data-en="Vegetable Search(voice)" data-ta="காய்கறி தேடல்(குரல்)">காய்கறி தேடல்(குரல்)</h1>
+        <div class="icon-buttons">
+            <img src="carrot.webp" alt="Vegetable Voice" id="vegetable-btn" class="icon">
+            <img src="district.webp" alt="District Voice" id="district-btn" class="icon">
+            <img src="district.png" alt="Market Voice" id="market-btn" class="icon">
+            <img src="date.webp" alt="Date Voice" id="date-btn" class="icon">
+        </div>
+    </div>  
+</div>
+<div class="container5">
+    <div class="chatbox">
+        <div class="chatbox__support">
+            <div class="chatbox__header">
+                <div class="chatbox__image--header" style="width: 80px;">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRqwQyIAeQrwasS_huhTdl8h9PutobquVFvQw&s" alt="image" style="height: 80%;width: 80%; border-radius: 75px;">
+                </div>
+                <div class="chatbox__content--header">
+                    <h4 class="chatbox__heading--header">Chat support</h4>
+                    <p class="chatbox__description--header">Hi. My name is santhru How can I help you?</p>
+                </div>
+            </div>
+            <div class="chatbox__messages">
+                <div></div>
+            </div>
+            <div class="chatbox__footer">
+                <input type="text" placeholder="Write a message...">
+                <button class="chatbox__send--footer send__button">Send</button>
+            </div>
+        </div>
+        <div class="chatbox__button">
+            <button><img src="./chatbot_images/chatbox-icon.svg" style="height: 120%;width: 120%;"/></button>
+        </div>
+    </div>
+</div>
+
+
+   <script src="app.js"></script>
+</body>
+</html>
